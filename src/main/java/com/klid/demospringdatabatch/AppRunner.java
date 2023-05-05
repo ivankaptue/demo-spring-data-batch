@@ -23,7 +23,10 @@ public class AppRunner implements ApplicationRunner {
   @Transactional
   @Override
   public void run(ApplicationArguments args) {
-    createdCustomers(500).stream().forEach(customerRepository::saveAndFlush);
+    customerRepository.saveAllAndFlush(createdCustomers(500));
+    customerRepository.saveAllAndFlush(createdCustomers(500));
+    customerRepository.saveAllAndFlush(createdCustomers(500));
+    customerRepository.saveAllAndFlush(createdCustomers(400));
   }
 
   private List<Customer> createdCustomers(int count) {
