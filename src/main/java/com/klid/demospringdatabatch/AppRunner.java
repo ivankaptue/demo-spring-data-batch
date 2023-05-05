@@ -23,10 +23,9 @@ public class AppRunner implements ApplicationRunner {
   @Transactional
   @Override
   public void run(ApplicationArguments args) {
-    customerRepository.saveAllAndFlush(createdCustomers(500));
-    customerRepository.saveAllAndFlush(createdCustomers(500));
-    customerRepository.saveAllAndFlush(createdCustomers(500));
-    customerRepository.saveAllAndFlush(createdCustomers(400));
+    for (int i = 0; i < 1000; i++) {
+      customerRepository.saveAllAndFlush(createdCustomers(500));
+    }
   }
 
   private List<Customer> createdCustomers(int count) {

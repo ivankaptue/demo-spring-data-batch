@@ -14,7 +14,7 @@ spring:
         generate_statistics: true
         show_sql: true
         format_sql: false
-#        order_inserts: true
-#        order_updates: true
-#        jdbc:
-#          batch_size: 5
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 500
