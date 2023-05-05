@@ -1,6 +1,7 @@
 package com.klid.demospringdatabatch;
 
 import com.github.javafaker.Faker;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -19,10 +20,10 @@ public class AppRunner implements ApplicationRunner {
 
   private final CustomerRepository customerRepository;
 
+  @Transactional
   @Override
   public void run(ApplicationArguments args) {
-    customerRepository.saveAll(createdCustomers(10));
-    customerRepository.saveAll(createdCustomers(15));
+    createdCustomers(100_000).stream().forEach(customerRepository::save);
   }
 
   private List<Customer> createdCustomers(int count) {
